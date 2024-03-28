@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "boilerplate"
+version = "0.1.0"
+description = "Boilerplate"
+authors = [
+    "DenysMoskalenko <denys.moskalenko@nixs.com>",
+]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+alembic = "^1.12.1"
+fastapi = "^0.110.0"
+pydantic = { version = "^2.6.4", extras = ["email"] }
+pydantic-settings = "^2.0.3"
+psycopg = "^3.1.9"
+sqlalchemy = "^2.0.29"
+uvicorn = "^0.29.0"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^3.7.0"
+coverage = "^7.4.4"
+httpx = "^0.27.0"
+pytest = "^8.1.1"
+pytest-asyncio = "^0.23.6"
+pytest-mock = "^3.14.0"
+polyfactory = "^2.11.0"
+ruff = "^0.3.4"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+#filterwarnings = "ignore::DeprecationWarning:passlib"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+exclude = [".venv"]
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = [
+    "E", # Errors
+    "F", # Pyflakes
+    "I", # isort
+    "T20", # flake8-print
+]
+pydocstyle.convention = 'google'
+
+[tool.ruff.lint.isort]
+known-local-folder = ["tests", "app", "scripts"]
+split-on-trailing-comma = true
+combine-as-imports = true
+case-sensitive = false
+detect-same-package = true
+order-by-type = false  # Sorting of all imported objects (functions, classes, etc.) regardless of their type
+force-sort-within-sections = true  # Don't sort straight-style imports before from-style imports.
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

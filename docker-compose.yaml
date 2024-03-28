@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  boilerplate-database:
+    image: postgres
+    volumes:
+      - /var/lib/postgresql/boilerplate-data/
+    environment:
+      - "POSTGRES_USER=boilerplate"
+      - "POSTGRES_PASSWORD=boilerplate"
+      - "POSTGRES_DB=BoilerPlate"
+    ports:
+      - "5432:5432"
+  boilerplate-test-database:
+    image: postgres
+    environment:
+      - "POSTGRES_USER=test_boilerplate"
+      - "POSTGRES_PASSWORD=test_boilerplate"
+      - "POSTGRES_DB=TestBoilerPlate"
+    ports:
+      - "5433:5432"
