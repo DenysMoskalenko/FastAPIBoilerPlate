@@ -35,11 +35,11 @@ asyncio_mode = "auto"
 [tool.ruff]
 line-length = 120
 target-version = "py311"
-exclude = [".venv"]
 
 [tool.ruff.format]
 quote-style = "single"
 indent-style = "space"
+docstring-code-format = true
 
 [tool.ruff.lint]
 select = [
