@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = 'AuthMGME'
+    PROJECT_NAME: str = 'Boilerplate'
 
     DATABASE_URL: PostgresDsn
     MIGRATION_ON_STARTUP: bool = True  # True for environments and False for local development

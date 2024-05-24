@@ -3,7 +3,7 @@
 ### Locally:
 
 1. Create a .env file and fill it with appropriate values, check dist.env about the needed attributes.
-2. Use a python 3.11 environment: `poetry env use 3.11`
+2. Use a python 3.12 environment: `poetry env use 3.12`
 3. Install dependencies: `poetry install`
 4. Run app: `make run_app`
 
