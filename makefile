@@ -9,11 +9,11 @@ up-dependencies:
 	docker compose up
 
 test:
+	pytest
+
+test-coverage:
 	coverage run -m pytest
 	coverage report
-
-test-no-coverage:
-	pytest
 
 test-html:
 	coverage run -m pytest

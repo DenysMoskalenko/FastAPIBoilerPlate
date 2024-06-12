@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, UTC
 
 from httpx import AsyncClient
 from pydantic import TypeAdapter
@@ -45,7 +45,7 @@ class TestExamplesCreate:
     async def test_fail_unreal_birthday(self, client: AsyncClient):
         payload = {
             'name': ExampleCreationFactory.build().name,
-            'birthday': (datetime.utcnow() + timedelta(days=1)).date().isoformat(),
+            'birthday': (datetime.now(UTC) + timedelta(days=1)).date().isoformat(),
         }
 
         response = await client.post('/examples', json=payload)
