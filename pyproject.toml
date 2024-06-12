@@ -6,14 +6,15 @@ authors = [
     "DenysMoskalenko <denys.moskalenko@nixs.com>",
 ]
 readme = "README.md"
+package-mode = false
 
 
 [tool.poetry.dependencies]
 python = "^3.12"
 alembic = "^1.12.1"
 fastapi = "^0.111.0"
-pydantic = { version = "^2.7.2", extras = ["email"] }
-pydantic-settings = "^2.0.3"
+pydantic = { version = "^2.7.3", extras = ["email"] }
+pydantic-settings = "^2.3.2"
 psycopg = "^3.1.19"
 sqlalchemy = "^2.0.30"
 uvicorn = { extras = ["standart"], version = "^0.30.1" }
@@ -22,11 +23,11 @@ uvicorn = { extras = ["standart"], version = "^0.30.1" }
 pre-commit = "^3.7.1"
 coverage = "^7.5.3"
 httpx = "^0.27.0"
-pytest = "^8.2.1"
+pytest = "^8.2.2"
 pytest-asyncio = "^0.23.7"
 pytest-mock = "^3.14.0"
 polyfactory = "^2.16.0"
-ruff = "^0.4.7"
+ruff = "^0.4.8"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

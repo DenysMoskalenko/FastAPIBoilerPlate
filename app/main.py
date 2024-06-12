@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.examples.routes import router as examples_router
 from app.core.config import get_settings
+from app.exception_handlers import include_exception_handlers
 from app.lifespan import lifespan
 
 logging.basicConfig(
@@ -17,6 +18,7 @@ def create_app() -> FastAPI:
     settings = get_settings()
 
     _app = FastAPI(title=settings.PROJECT_NAME, version='0.1.0', lifespan=lifespan)
+    include_exception_handlers(_app)
 
     _app.include_router(examples_router)
 
