@@ -17,7 +17,7 @@ pydantic = { version = "^2.7.3", extras = ["email"] }
 pydantic-settings = "^2.3.2"
 psycopg = "^3.1.19"
 sqlalchemy = "^2.0.30"
-uvicorn = { extras = ["standart"], version = "^0.30.1" }
+uvicorn = { extras = ["standard"], version = "^0.30.1" }
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^3.7.1"
@@ -27,11 +27,14 @@ pytest = "^8.2.2"
 pytest-asyncio = "^0.23.7"
 pytest-mock = "^3.14.0"
 polyfactory = "^2.16.0"
-ruff = "^0.4.8"
+ruff = "^0.4.9"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-#filterwarnings = "ignore::DeprecationWarning:passlib"
+#filterwarnings = [
+#    "ignore::DeprecationWarning:passlib",
+#    "ignore::DeprecationWarning:jose"
+#]
 
 [tool.ruff]
 line-length = 120
