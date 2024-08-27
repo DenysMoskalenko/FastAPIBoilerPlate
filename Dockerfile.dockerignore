@@ -1,6 +1,6 @@
+*.env
 .github/
 tests/
 .gitignore
-*.env
 docker-compose.yaml
 README.md
