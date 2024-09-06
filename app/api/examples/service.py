@@ -1,3 +1,5 @@
+from typing import Annotated
+
 from fastapi import Depends
 from psycopg.errors import UniqueViolation
 from pydantic import TypeAdapter
@@ -12,7 +14,7 @@ from app.models.example import ExampleModel
 
 
 class ExampleService:
-    def __init__(self, session: AsyncSession = Depends(get_session)):
+    def __init__(self, session: Annotated[AsyncSession, Depends(get_session)]):
         self._session = session
 
     async def get_example_by_id(self, example_id: int) -> Example:
