@@ -1,37 +1,39 @@
-[tool.poetry]
+[project]
 name = "boilerplate"
 version = "0.1.0"
-description = "Boilerplate"
+description = "Add your description here"
 authors = [
     "DenysMoskalenko <denys.moskalenko@nixs.com>",
 ]
 readme = "README.md"
-package-mode = false
+requires-python = ">=3.12"
 
+dependencies = [
+    "alembic>=1.14.1",
+    "fastapi>=0.115.7",
+    "psycopg[binary]>=3.2.4",
+    "pydantic-settings>=2.7.1",
+    "pydantic[email]>=2.10.6",
+    "sqlalchemy>=2.0.37",
+    "uvicorn[standard]>=0.34.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-alembic = "^1.14.0"
-fastapi = "^0.115.5"
-pydantic = { version = "^2.10.2", extras = ["email"] }
-pydantic-settings = "^2.6.1"
-psycopg = { extras = ["binary"], version = "^3.2.3" }
-sqlalchemy = "^2.0.36"
-uvicorn = { extras = ["standard"], version = "^0.32.1" }
+[dependency-groups]
+dev = [
+    "coverage>=7.6.10",
+    "httpx>=0.28.1",
+    "polyfactory>=2.18.1",
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.2",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.9.3",
+]
 
-[tool.poetry.dev-dependencies]
-pre-commit = "^4.0.1"
-coverage = "^7.6.8"
-httpx = "^0.28.0"
-pytest = "^8.3.4"
-pytest-asyncio = "^0.24.0"
-pytest-mock = "^3.14.0"
-polyfactory = "^2.18.1"
-ruff = "^0.8.1"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-asyncio_default_fixture_loop_scope="session"
+asyncio_default_fixture_loop_scope = "session"
 #filterwarnings = [
 #    "ignore::DeprecationWarning:passlib",
 #    "ignore::DeprecationWarning:jose"
@@ -63,8 +65,3 @@ case-sensitive = false
 detect-same-package = true
 order-by-type = false  # Sorting of all imported objects (functions, classes, etc.) regardless of their type
 force-sort-within-sections = true  # Don't sort straight-style imports before from-style imports.
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
