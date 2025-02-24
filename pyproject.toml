@@ -10,9 +10,10 @@ requires-python = ">=3.12"
 
 dependencies = [
     "alembic>=1.14.1",
-    "fastapi>=0.115.7",
-    "psycopg[binary]>=3.2.4",
-    "pydantic-settings>=2.7.1",
+    "fastapi>=0.115.8",
+    "httpx==1.0.0b0",
+    "psycopg[binary]>=3.2.5",
+    "pydantic-settings>=2.8.0",
     "pydantic[email]>=2.10.6",
     "sqlalchemy>=2.0.37",
     "uvicorn[standard]>=0.34.0",
@@ -22,12 +23,12 @@ dependencies = [
 dev = [
     "coverage>=7.6.10",
     "httpx>=0.28.1",
-    "polyfactory>=2.18.1",
+    "polyfactory>=2.19.0",
     "pre-commit>=4.1.0",
     "pytest>=8.3.4",
-    "pytest-asyncio>=0.25.2",
+    "pytest-asyncio>=0.25.3",
     "pytest-mock>=3.14.0",
-    "ruff>=0.9.3",
+    "ruff>=0.9.7",
 ]
 
 
@@ -41,7 +42,7 @@ asyncio_default_fixture_loop_scope = "session"
 
 [tool.ruff]
 line-length = 120
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.format]
 quote-style = "single"

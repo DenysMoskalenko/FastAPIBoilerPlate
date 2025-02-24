@@ -34,8 +34,8 @@ COPY --from=builder --chown=app:app /app /app
 
 # Environment variables
 ENV PATH="/app/.venv/bin:$PATH"
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 ENTRYPOINT ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 # Use gunicorn for scale into several processes (workers) instead of uvicorn if needed
