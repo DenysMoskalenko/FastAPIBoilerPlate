@@ -5,8 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.examples.routes import router as examples_router
 from app.core.config import get_settings
-from app.exception_handlers import include_exception_handlers
-from app.lifespan import lifespan
+from app.core.exception_handlers import include_exception_handlers
+from app.core.lifespan import lifespan
 
 logging.basicConfig(
     level=logging.INFO,

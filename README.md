@@ -3,9 +3,17 @@
 ### Locally:
 
 1. Create a .env file and fill it with appropriate values, check dist.env about the needed attributes.
-2. Use a python 3.12 environment: `poetry env use 3.12`
-3. Install dependencies: `poetry install`
-4. Run app: `make run_app`
+2. (Optional) Install required 3.12 python `uv python install 3.12` if not installed
+3. Create virtual environment: `uv venv --python 3.12`
+4. Activate environment `source .venv/bin/activate`
+5. Install project dependencies: `uv sync`
+6. Copy `dist.env` file into `.env` file and provide correct env variables
+7. Run app: `make run`
+
+### Before PR:
+
+1. Run linter using `make lint`
+2. Run tests using `make test` (Up dependencies if needed)
 
 ### Creation of pre-commit hook
 

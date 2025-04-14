@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from functools import lru_cache
-from typing import AsyncIterable
+from typing import Any, AsyncGenerator, AsyncIterable
 
 from alembic.config import Config
 from pydantic import PostgresDsn
@@ -49,7 +49,7 @@ async def get_session() -> AsyncIterable[AsyncSession]:
 
 
 @asynccontextmanager
-async def open_db_session() -> AsyncSession:
+async def open_db_session() -> AsyncGenerator[AsyncSession, Any]:
     """For usage as context manager outside FastAPI Depends."""
     factory: async_sessionmaker = async_session_factory()
     session: AsyncSession = factory()

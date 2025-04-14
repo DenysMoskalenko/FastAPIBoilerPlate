@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from typing import Any, AsyncGenerator
 
 from alembic.command import upgrade
 from fastapi import FastAPI
@@ -8,7 +9,7 @@ from app.core.database import get_alembic_config
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, Any]:
     settings = get_settings()
     await startup(settings)
     yield

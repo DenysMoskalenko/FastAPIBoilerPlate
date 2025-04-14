@@ -1,7 +1,7 @@
 from asyncio import DefaultEventLoopPolicy
 import os
 import pathlib
-from typing import AsyncIterable
+from typing import Any, AsyncGenerator, AsyncIterable
 
 from alembic.command import downgrade, upgrade
 from fastapi import FastAPI
@@ -26,7 +26,7 @@ def pytest_configure(config: pytest.Config):
 
 
 @pytest.fixture(scope='session')
-async def app() -> FastAPI:
+async def app() -> AsyncGenerator[FastAPI, Any]:
     from app.main import create_app
 
     _app = create_app()
@@ -36,7 +36,7 @@ async def app() -> FastAPI:
 
 
 @pytest.fixture(scope='session')
-async def client(app: FastAPI) -> AsyncClient:
+async def client(app: FastAPI) -> AsyncGenerator[AsyncClient, Any]:
     async with AsyncClient(transport=ASGITransport(app=app), base_url=TEST_HOST) as client:
         yield client
 
