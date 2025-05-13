@@ -9,26 +9,25 @@ readme = "README.md"
 requires-python = ">=3.12"
 
 dependencies = [
-    "alembic>=1.14.1",
-    "fastapi>=0.115.8",
+    "alembic>=1.15.2",
+    "fastapi>=0.115.12",
     "httpx>=0.28.1",
-    "psycopg[binary]>=3.2.5",
-    "pydantic-settings>=2.8.0",
-    "pydantic[email]>=2.10.6",
-    "sqlalchemy>=2.0.37",
-    "uvicorn[standard]>=0.34.0",
+    "psycopg[binary]>=3.2.8",
+    "pydantic-settings>=2.9.1",
+    "pydantic[email]>=2.11.4",
+    "sqlalchemy>=2.0.40",
+    "uvicorn[standard]>=0.34.2",
 ]
 
 [dependency-groups]
 dev = [
-    "coverage>=7.6.10",
+    "ruff>=0.11.9",
+    "pre-commit>=4.2.0",
+    "coverage>=7.6.12",
     "httpx>=0.28.1",
-    "polyfactory>=2.19.0",
-    "pre-commit>=4.1.0",
-    "pytest>=8.3.4",
-    "pytest-asyncio>=0.25.3",
-    "pytest-mock>=3.14.0",
-    "ruff>=0.9.7",
+    "polyfactory>=2.21.0",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.26.0",
 ]
 
 
