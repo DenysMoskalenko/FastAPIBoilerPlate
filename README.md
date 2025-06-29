@@ -1,5 +1,13 @@
 # FastAPIBoilerPlate
 
+## 🚀 New Projects? Use BoilerplateBuilder!
+
+For starting new FastAPI projects (and more), it's much more comfortable to use the **[BoilerplateBuilder](https://github.com/DenysMoskalenko/BoilerplateBuilder)** 🏗️
+
+**All new actual changes and improvements will be made in the [BoilerplateBuilder](https://github.com/DenysMoskalenko/BoilerplateBuilder) repository.**
+
+---
+
 ### Locally:
 
 1. Create a .env file and fill it with appropriate values, check dist.env about the needed attributes.
