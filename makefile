@@ -5,9 +5,6 @@ lint:
 lint-no-format:
 	ruff check
 
-up-dependencies:
-	docker compose up
-
 test:
 	pytest
 
@@ -16,15 +13,3 @@ test-coverage:
 
 run:
 	uvicorn app.main:app --reload --port=8000
-
-migration:
-	alembic revision --autogenerate -m "$(MSG)"
-
-migrate:
-	alembic upgrade head
-
-upgrade:
-	alembic upgrade +1
-
-downgrade:
-	alembic downgrade -1

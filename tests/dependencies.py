@@ -4,8 +4,6 @@ from typing import Callable
 from fastapi import FastAPI
 from starlette.routing import Mount
 
-from app.core.database import get_session
-
 
 @dataclass(frozen=True, kw_only=True, slots=True)
 class _DepOverride:
@@ -15,7 +13,7 @@ class _DepOverride:
 
 def override_app_test_dependencies(app: FastAPI):
     deps: list[_DepOverride] = [
-        _DepOverride(dependency=get_session, override=lambda: SessionFixtureDoesNotSetExplicitly),
+        # _DepOverride(dependency=get_session, override=lambda: get_test_session),  # Override your deps for session
     ]
     for dep in deps:
         override_dependency(app, dep.dependency, dep.override)
@@ -27,6 +25,3 @@ def override_dependency(app: FastAPI, dependency: Callable, override: Callable) 
     for route in app.router.routes:
         if isinstance(route, Mount):
             route.app.dependency_overrides[dependency] = override
-
-
-class SessionFixtureDoesNotSetExplicitly: ...
