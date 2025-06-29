@@ -11,15 +11,5 @@ services:
     ports:
       - "5432:5432"
 
-  boilerplate-test-database:
-    image: postgres
-    container_name: boilerplate-test-database
-    environment:
-      - "POSTGRES_USER=test_boilerplate"
-      - "POSTGRES_PASSWORD=test_boilerplate"
-      - "POSTGRES_DB=TestBoilerPlate"
-    ports:
-      - "5433:5432"
-
 volumes:
   boilerplate_data:
