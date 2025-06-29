@@ -67,8 +67,5 @@ async def open_db_session() -> AsyncGenerator[AsyncSession, Any]:
 def get_alembic_config(database_url: PostgresDsn, script_location: str = 'migrations') -> Config:
     alembic_config = Config()
     alembic_config.set_main_option('script_location', script_location)
-    alembic_config.set_main_option(
-        'sqlalchemy.url',
-        database_url.unicode_string().replace('postgresql+asyncpg', 'postgresql'),
-    )
+    alembic_config.set_main_option('sqlalchemy.url', database_url.unicode_string())
     return alembic_config
