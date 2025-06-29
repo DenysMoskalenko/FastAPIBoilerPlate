@@ -12,14 +12,9 @@ test:
 	pytest
 
 test-coverage:
-	coverage run -m pytest
-	coverage report
+	pytest --cov=app --cov-report=term-missing --cov-report=html --cov-fail-under=90
 
-test-html:
-	coverage run -m pytest
-	coverage html
-
-run_app:
+run:
 	uvicorn app.main:app --reload --port=8000
 
 migration:

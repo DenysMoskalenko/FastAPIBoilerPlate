@@ -10,4 +10,4 @@ def load_all_models() -> None:
         prefix='app.models.',
     )
     for module in modules:
-        __import__(module.name)  # noqa: WPS421
+        __import__(module.name)

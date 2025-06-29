@@ -22,3 +22,10 @@ After you installed all dependencies(including dev dependencies):
 1. Create `.pre-commit-config.yaml` file with your settings.
    We usually use [ruff-pre-commit](https://github.com/astral-sh/ruff-pre-commit)
 2. run `pre-commit install` to activate tour pre-commit hook
+
+### Git setup
+
+Before making any commits—ensure you are using correct work profile.
+
+1. Check you name/email by `git config user.name` and `git config user.email`
+2. Change name/email by `git config user.name "Your Fullname"`/`git config user.email "YourWorkEmail"`

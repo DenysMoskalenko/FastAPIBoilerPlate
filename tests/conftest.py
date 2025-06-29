@@ -1,13 +1,14 @@
 from asyncio import DefaultEventLoopPolicy
 import os
 import pathlib
-from typing import Any, AsyncGenerator, AsyncIterable
+from typing import Any, AsyncGenerator, AsyncIterable, Generator
 
 from alembic.command import downgrade, upgrade
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 import pytest
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncEngine, AsyncSession, create_async_engine
+from testcontainers.postgres import PostgresContainer
 
 from app.core.config import get_settings
 from tests.dependencies import override_app_test_dependencies, override_dependency
@@ -15,13 +16,12 @@ from tests.dependencies import override_app_test_dependencies, override_dependen
 TEST_HOST = 'http://test'
 
 
-def pytest_configure(config: pytest.Config):
+def pytest_configure(config: pytest.Config) -> None:
     """
     Allows plugins and conftest files to perform initial configuration.
     This hook is called for every plugin and initial conftest
     file after command line options have been parsed.
     """
-    os.environ['DATABASE_URL'] = 'postgresql+psycopg://test_boilerplate:test_boilerplate@localhost:5433/TestBoilerPlate'
     os.environ['MIGRATION_ON_STARTUP'] = 'False'
 
 
@@ -61,8 +61,8 @@ async def session(app: FastAPI, _engine: AsyncEngine) -> AsyncIterable[AsyncSess
         await connection.close()
 
 
-@pytest.fixture(scope='session', autouse=True)
-async def _engine() -> AsyncIterable[AsyncEngine]:
+@pytest.fixture(scope='session')
+async def _engine(_postgres_container: PostgresContainer) -> AsyncIterable[AsyncEngine]:
     settings = get_settings()
 
     from app.core.database import get_alembic_config
@@ -80,6 +80,19 @@ async def _engine() -> AsyncIterable[AsyncEngine]:
         async with engine.begin() as connection:
             await connection.run_sync(lambda conn: downgrade(alembic_config, 'base'))
         await engine.dispose()
+
+
+@pytest.fixture(scope='session', autouse=True)
+def _postgres_container() -> Generator[PostgresContainer, Any, None]:
+    with PostgresContainer(
+        image='postgres:latest', username='test_boilerplate', password='test_boilerplate', dbname='TestBoilerPlate'
+    ) as postgres:
+        host = postgres.get_container_host_ip()
+        port = postgres.get_exposed_port(5432)
+        os.environ['DATABASE_URL'] = (
+            f'postgresql+psycopg://{postgres.username}:{postgres.password}@{host}:{port}/{postgres.dbname}'
+        )
+        yield postgres
 
 
 def find_migrations_script_location() -> str:
