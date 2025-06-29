@@ -12,4 +12,4 @@ test-coverage:
 	pytest --cov=app --cov-report=term-missing --cov-report=html --cov-fail-under=90
 
 run:
-	uvicorn app.main:app --reload --port=8000
+	python -m app.main
